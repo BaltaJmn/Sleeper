@@ -142,7 +142,7 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
             )
         )
 
-        Spacer(modifier = Modifier.height(128.dp))
+        Spacer(modifier = Modifier.height(64.dp))
 
         Text(
             text = "Made with ❤️ by @BaltaJmn",
@@ -194,7 +194,7 @@ fun HourRecommendation(hour: Hour, onHourSelected: (String) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .border(
-                width = 1.dp,
+                width = if (hour.isRecommended) 2.dp else 1.dp,
                 color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(8.dp)
             )

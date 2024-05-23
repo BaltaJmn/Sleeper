@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.baltajmn.sleeper.common.isNumericOrBlank
 
 @Composable
 fun TimeInputField(
@@ -35,18 +36,22 @@ fun TimeInputField(
             selection = TextRange(value.length)
         ),
         onValueChange = { newValue ->
-            if (newValue.text.isNotEmpty()) {
-                if (newValue.text.length == 1 && newValue.text.toInt() >= 3) {
-                    onValueChange("0${newValue.text}")
-                } else {
-                    if (newValue.text.length == 3 && newValue.text.last().toString().toInt() > 5) {
-                        onValueChange("${newValue.text.dropLast(1)}5")
+            if (newValue.text.isNumericOrBlank()) {
+                if (newValue.text.isNotEmpty()) {
+                    if (newValue.text.length == 1 && newValue.text.toInt() >= 3) {
+                        onValueChange("0${newValue.text}")
                     } else {
-                        onValueChange(newValue.text)
+                        if (newValue.text.length == 3 && newValue.text.last().toString()
+                                .toInt() > 5
+                        ) {
+                            onValueChange("${newValue.text.dropLast(1)}5")
+                        } else {
+                            onValueChange(newValue.text)
+                        }
                     }
+                } else {
+                    onValueChange(newValue.text)
                 }
-            } else {
-                onValueChange(newValue.text)
             }
         },
         label = { Text(label) },
