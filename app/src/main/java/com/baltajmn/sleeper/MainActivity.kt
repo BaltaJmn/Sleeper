@@ -106,7 +106,7 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
 
         GetUpSelector(state, viewModel)
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         TimeInputField(
             label = "Escoge una hora",
@@ -142,7 +142,7 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
             )
         )
 
-        Spacer(modifier = Modifier.height(192.dp))
+        Spacer(modifier = Modifier.height(128.dp))
 
         Text(
             text = "Made with ❤️ by @BaltaJmn",
@@ -159,9 +159,9 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
 fun TimeSentence(isGetUp: Boolean, hour: String) {
     Text(
         text = if (isGetUp) {
-            "Si me levanto a las ${hour.toHour()}, me debería de dormir a las..."
+            "Si me levanto a las ${hour.toHour()},\n me debería de dormir a las..."
         } else {
-            "Si me duermo a las ${hour.toHour()}, me debería de lenvantar a las..."
+            "Si me duermo a las ${hour.toHour()},\n me debería de lenvantar a las..."
         },
         style = SubBody.copy(
             textAlign = TextAlign.Center,
