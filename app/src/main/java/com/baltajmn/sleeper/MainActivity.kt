@@ -109,7 +109,7 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
         Spacer(modifier = Modifier.height(24.dp))
 
         TimeInputField(
-            label = "Escoge una hora",
+            label = LocalContext.current.getString(R.string.choose_hour),
             value = state.hourSelected
         ) { newValue ->
             viewModel.onHourSelected(newValue)
@@ -134,7 +134,7 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Pulsa en alguna para añadir una alarma 🕰️",
+            text = LocalContext.current.getString(R.string.click_to_add_alarm),
             style = SubBody.copy(
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
@@ -159,9 +159,9 @@ fun MainContent(viewModel: MainViewModel, state: MainState) {
 fun TimeSentence(isGetUp: Boolean, hour: String) {
     Text(
         text = if (isGetUp) {
-            "Si me levanto a las ${hour.toHour()},\n me debería de dormir a las..."
+            LocalContext.current.getString(R.string.if_i_get_up, hour.toHour())
         } else {
-            "Si me duermo a las ${hour.toHour()},\n me debería de lenvantar a las..."
+            LocalContext.current.getString(R.string.if_i_sleep, hour.toHour())
         },
         style = SubBody.copy(
             textAlign = TextAlign.Center,
@@ -212,13 +212,13 @@ fun HourRecommendation(hour: Hour, onHourSelected: (String) -> Unit) {
             )
         )
         Text(
-            text = "${hour.hourSleeping} durmiendo",
+            text = LocalContext.current.getString(R.string.sleeping, hour.hourSleeping),
             style = SubBody.copy(
                 color = Color.Black
             )
         )
         Text(
-            text = "${hour.cycles} ciclos de sueño",
+            text = LocalContext.current.getString(R.string.sleep_cycles, hour.cycles),
             style = SubBody.copy(
                 color = Color.Black
             )
@@ -226,7 +226,7 @@ fun HourRecommendation(hour: Hour, onHourSelected: (String) -> Unit) {
         if (hour.isRecommended) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Recomendado",
+                text = LocalContext.current.getString(R.string.recommended),
                 style = SmallTitle.copy(
                     fontSize = 15.sp,
                     color = MaterialTheme.colorScheme.primary

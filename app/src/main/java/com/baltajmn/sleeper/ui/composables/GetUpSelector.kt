@@ -17,11 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.baltajmn.sleeper.MainState
 import com.baltajmn.sleeper.MainViewModel
+import com.baltajmn.sleeper.R
 import com.baltajmn.sleeper.ui.theme.SmallTitle
 
 @Composable
@@ -70,7 +72,11 @@ private fun GetUpOption(positionStart: Boolean, isGetUp: Boolean, onOptionClicke
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = if (positionStart) "Quiero despertarme\n a las ..." else "Quiero acostarme\n a las ...",
+            text = if (positionStart) {
+                LocalContext.current.getString(R.string.i_want_to_get_up)
+            } else {
+                LocalContext.current.getString(R.string.i_want_to_sleep)
+            },
             color = if (isGetUp) Color.White else Color.Black,
             style = SmallTitle.copy(
                 fontSize = 15.sp,

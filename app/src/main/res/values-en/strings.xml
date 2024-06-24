@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sleeper</string>
+    <string name="choose_hour">Choose an hour</string>
+    <string name="click_to_add_alarm">Click on one to add an alarm 🕰️</string>
+    <string name="if_i_get_up">If I get up at %1$s,\\n I should go to sleep at…</string>
+    <string name="if_i_sleep">If I go to sleep at %1$s,\\n I should get up at…</string>
+    <string name="sleeping">%1$s sleeping</string>
+    <string name="sleep_cycles">%1$s sleep cycles</string>
+    <string name="recommended">Recommended</string>
+    <string name="i_want_to_get_up">I want to get up\\n at…</string>
+    <string name="i_want_to_sleep">I want to go to bed\\n at…</string>
+</resources>
