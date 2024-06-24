@@ -2,6 +2,7 @@ package com.baltajmn.sleeper.ui.composables
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TextFieldValue
@@ -36,8 +38,8 @@ fun TimeInputField(
             selection = TextRange(value.length)
         ),
         onValueChange = { newValue ->
-            if (newValue.text.isNumericOrBlank()) {
-                if (newValue.text.isNotEmpty()) {
+            if (newValue.text.trim().isNumericOrBlank()) {
+                if (newValue.text.trim().isNotEmpty()) {
                     if (newValue.text.length == 1 && newValue.text.toInt() >= 3) {
                         onValueChange("0${newValue.text}")
                     } else {
@@ -55,7 +57,11 @@ fun TimeInputField(
             }
         },
         label = { Text(label) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions(onDone = {}),
         visualTransformation = visualTransformation
     )
 }
